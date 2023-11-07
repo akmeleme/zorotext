@@ -1,0 +1,41 @@
+{% extends "./base.html" %}
+
+
+{% block centre %}
+<div class="droite">
+            <div class="container1">
+                <div class="ajouter "><button><a href="{{ url_for('enregistremag') }}">ajouter</a></button></div>
+                <div class="tab">
+                    <div class="minitab">
+                        <h3>Liste des Magasins</h3>
+                        <table border="2">
+                          <tr>
+
+                              <td class="id un">Id</td>
+                              <td class="un">Nom</td>
+                              <td class="un">Adresse</td>
+                              <td class="un">Telephone</td>
+                              <td class="un">Email</td>
+                              <td class="un">Action</td>
+
+                          </tr>
+                          {% for row in data %}
+                          <tr>
+                            <td> {{ row[0] }} </td>
+                            <td> {{ row[1] }} </td>
+                            <td> {{ row[2] }} </td>
+                            <td> {{ row[3] }} </td>
+                            <td> {{ row[4] }} </td>
+                            <td class="action">
+                              <button class="modifier"><a href="{{ url_for('MagEdit', item_id=row[0]) }}">Modifier</a></button>
+                              <button class="Supprimer"><a href="{{ url_for('MagDelete', item_id=row[0]) }}">Supprimer</a></button>
+                            </td>
+                          </tr>
+                          {% endfor %}
+                            
+                        </table>
+                    </div>
+                </div>
+            </div>
+</div>
+{%endblock%}
